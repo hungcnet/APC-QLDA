@@ -15606,6 +15606,15 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
   html:root #app .nav .nav-actions .nav-date-wrap { margin: 0 !important; padding: 0 !important; height: auto !important; display: flex !important; align-items: center !important; }
   html:root #app .nav .nav-actions .nav-refresh svg { width: 20px !important; height: 20px !important; }
 }
+
+/* Nút làm mới: luôn quay khi đang tải, kể cả khi máy bật "giảm chuyển động" (Windows tắt hiệu ứng
+   động). Các luật chung `*{animation:none!important}` ở đầu tệp đã chặn nó — luật !important
+   nằm trong @layer thắng luật !important ngoài layer. Con trỏ đổi về bàn tay thay cho vòng xanh
+   "đang xử lý" của Windows. */
+@layer da51 {
+  html:root .nav-date-wrap.is-loading .nav-refresh svg { animation: navSpin .8s linear infinite !important; }
+  html:root .nav-refresh, html:root .nav-refresh:disabled { cursor: pointer !important; }
+}
 </style>
 
   <script>
