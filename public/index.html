@@ -15585,6 +15585,18 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
   html:root #app #side .btn-synchro-black-pill { height: 34px !important; }
   html:root #app #side .pa9-side-brand { display: none !important; }
 }
+/* ===== CHẠY NHƯ APP (PWA, thêm vào màn hình chính) =====
+   Ở chế độ toàn màn hình không còn thanh công cụ của Safari nên safe-area đáy (~34px)
+   đẩy thanh tab nổi lên cao, lộ nội dung phía dưới và vạch Home đè lên chữ.
+   Hạ thanh tab xuống sát đáy hơn và phủ một dải nền kín bên dưới nó. */
+@media (display-mode: standalone) {
+  html:root #tabbar.tabbar { bottom: calc(6px + env(safe-area-inset-bottom, 0px) * 0.4) !important; }
+  html:root body::after {
+    display: block !important; content: ""; position: fixed; left: 0; right: 0; bottom: 0; z-index: 44; pointer-events: none;
+    height: calc(6px + env(safe-area-inset-bottom, 0px) * 0.4 + 30px);
+    background: linear-gradient(to top, var(--pa9-nen, #F4F9EE) 60%, transparent);
+  }
+}
 </style>
 
   <script>
