@@ -15600,6 +15600,12 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
   }
 }
 }
+
+/* Nút làm mới nằm trong nhóm nút bên phải, cùng cỡ/viền/bóng với nút Chia sẻ, Thông báo, Giao diện. */
+@layer da51 {
+  html:root #app .nav .nav-actions .nav-date-wrap { margin: 0 !important; padding: 0 !important; height: auto !important; display: flex !important; align-items: center !important; }
+  html:root #app .nav .nav-actions .nav-refresh svg { width: 20px !important; height: 20px !important; }
+}
 </style>
 
   <script>
@@ -15735,13 +15741,14 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
         <kbd title="Bấm Ctrl và K để nhảy vào ô tìm kiếm">Ctrl K</kbd>
       </div>
       <!-- Ngày hôm nay + nút làm mới dữ liệu (18/11/2026). Bấm nút: tải lại toàn bộ dữ liệu từ máy chủ, biểu tượng ↻ trong nút tự xoay (không hiện chữ "Đang tải dữ liệu"); giữ Shift khi bấm = tải lại cả trang (để nhận bản giao diện mới). -->
-      <div class="nav-date-wrap" id="navDateWrap">
-        <span class="nav-date" id="navDate"></span>
-        <button type="button" class="nav-refresh" id="btnRefresh" title="Làm mới dữ liệu (giữ Shift khi bấm để tải lại cả trang)" aria-label="Làm mới dữ liệu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
-      </div>
+      
 
       <!-- Right Header Actions (Synchro Style) -->
       <div class="nav-actions">
+        <div class="nav-date-wrap" id="navDateWrap">
+        <span class="nav-date" id="navDate"></span>
+        <button type="button" class="nav-refresh iconbtn synchro-top-btn" id="btnRefresh" title="Làm mới dữ liệu (giữ Shift khi bấm để tải lại cả trang)" aria-label="Làm mới dữ liệu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
+      </div>
         <button type="button" class="synchro-top-btn" id="btnHeaderShare" title="Sao chép link ứng dụng để gửi cho đồng nghiệp" aria-label="Sao chép link ứng dụng">
           <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         </button>
