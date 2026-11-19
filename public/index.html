@@ -15585,20 +15585,19 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
   html:root #app #side .btn-synchro-black-pill { height: 34px !important; }
   html:root #app #side .pa9-side-brand { display: none !important; }
 }
-/* ===== CHẠY NHƯ APP (PWA, thêm vào màn hình chính) =====
-   Thanh tab dính sát đáy, rộng hết chiều ngang, không bo, giống thanh tab của app gốc.
-   Phần vùng an toàn (vạch Home của iPhone) nằm trong padding của chính thanh tab. */
+/* ===== THANH TAB DƯỚI: giữ dạng viên bo tròn, hạ sát đáy điện thoại =====
+   Nằm trong @layer da51 vì các quy tắc !important cũ của thanh tab ở trong layer này
+   (quy tắc !important trong layer luôn thắng quy tắc !important ngoài layer).
+   Cách đáy: 6px + 30% vùng an toàn (vạch Home iPhone). Dải nền kín phía dưới để nội dung
+   cuộn không lộ ra dưới thanh tab. */
 @layer da51 {
 @media (display-mode: standalone), (max-width: 820px) {
-  html:root #tabbar.tabbar {
-    left: 0 !important; right: 0 !important; bottom: 0 !important; width: auto !important;
-    height: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
-    padding: 0 6px env(safe-area-inset-bottom, 0px) !important;
-    box-sizing: border-box !important;
-    border-radius: 26px 26px 0 0 !important;
-    box-shadow: 0 0 0 1px var(--pa9-vien, rgba(0,0,0,.08)), 0 -4px 16px rgba(0,0,0,.05) !important;
+  html:root #tabbar.tabbar { bottom: calc(6px + env(safe-area-inset-bottom, 0px) * 0.3) !important; }
+  html:root body::after {
+    display: block !important; content: ""; position: fixed; left: 0; right: 0; bottom: 0; z-index: 44; pointer-events: none;
+    height: calc(6px + env(safe-area-inset-bottom, 0px) * 0.3 + 40px);
+    background: linear-gradient(to top, var(--pa9-nen, #F4F9EE) 55%, transparent);
   }
-  html:root body::after { display: none !important; }
 }
 }
 </style>
