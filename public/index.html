@@ -15588,7 +15588,7 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
 /* ===== CHẠY NHƯ APP (PWA, thêm vào màn hình chính) =====
    Thanh tab dính sát đáy, rộng hết chiều ngang, không bo, giống thanh tab của app gốc.
    Phần vùng an toàn (vạch Home của iPhone) nằm trong padding của chính thanh tab. */
-@media (display-mode: standalone) {
+@media (display-mode: standalone), (max-width: 820px) {
   html:root #tabbar.tabbar {
     left: 0 !important; right: 0 !important; bottom: 0 !important; width: auto !important;
     height: calc(64px + env(safe-area-inset-bottom, 0px)) !important;
