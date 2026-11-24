@@ -15709,6 +15709,29 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
   html:root[data-theme="dark"] #app .staff-act-btn { color: var(--accent) !important; }
   html:root[data-theme="dark"] #app .g-day.today .dn { color: var(--on-pen) !important; }
 }
+/* ============================================================================
+   KHUNG HIỂN THỊ FULL MÀN HÌNH (24/11/2026)
+   Trước đây khung ứng dụng bị chặn ở 1680px và căn giữa, từng trang con còn bị chặn thêm
+   (Tổng quan 1320px, Dự án 1200px, Công việc/Lịch 1400px, Việc của tôi 900px) nên màn hình lớn
+   (2K/4K/ultrawide) thừa khoảng trống hai bên. Nay mọi khung co giãn theo 100% chiều ngang màn hình.
+   Muốn đặt lại giới hạn (vd. 2200px cho màn siêu rộng): đổi --app-max-w ngay dưới đây.
+   ========================================================================== */
+@layer da51 {
+  :root { --app-max-w: none; }
+  @media (min-width: 1280px) {
+    html:root body #app, html:root #app.app {
+      max-width: var(--app-max-w) !important;
+      width: auto !important;
+      margin: 16px !important;
+    }
+  }
+  html:root #app .shell { max-width: var(--app-max-w) !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
+  html:root #app .dash-v2,
+  html:root #app .proj-detail-view,
+  html:root #app .taskcards-wrap,
+  html:root #app .cal-modern-wrap,
+  html:root #app .mine-wrap { max-width: var(--app-max-w) !important; width: 100% !important; margin-left: 0 !important; margin-right: 0 !important; }
+}
 </style>
 
   <script>
