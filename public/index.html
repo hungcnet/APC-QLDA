@@ -15627,6 +15627,88 @@ html:root .side::-webkit-scrollbar, html:root #app #side::-webkit-scrollbar { wi
   html:root #app .nav .nav-date-wrap .nav-date { margin-right: 8px !important; }
 }
 }
+/* ============================================================================
+   SỬA MÀU CHẾ ĐỘ TỐI (24/11/2026)
+   Lỗi: nhiều màn dùng màu chữ/nền sáng viết cứng (#0f172a, #1e293b, #f8fafc, #fff...) nên trên nền tối
+   chữ gần như vô hình (tên việc, tiêu đề mục, ngày) hoặc có khối trắng chói (tuần, chú thích, thẻ tiến độ).
+   Cách sửa: chỉ áp khi data-theme="dark", dùng biến màu có sẵn (--ink, --ink-2, --card, --sep...).
+   Chế độ Sáng KHÔNG bị đổi. Muốn chữ rõ hơn nữa: nâng --ink-2 / --ink-3 ở đây.
+   ========================================================================== */
+@layer da51 {
+  html:root[data-theme="dark"] #app {
+    /* ---- Chi tiết dự án ---- */
+  }
+  html:root[data-theme="dark"] #app .proj-crumb-link,
+  html:root[data-theme="dark"] #app .proj-detail-sub,
+  html:root[data-theme="dark"] #app .proj-info-desc,
+  html:root[data-theme="dark"] #app .proj-meta-item,
+  html:root[data-theme="dark"] #app .proj-meta-item span,
+  html:root[data-theme="dark"] #app .proj-task-date,
+  html:root[data-theme="dark"] #app .proj-goal-title,
+  html:root[data-theme="dark"] #app .proj-prog-head,
+  html:root[data-theme="dark"] #app .proj-prog-foot { color: var(--ink-2) !important; }
+  html:root[data-theme="dark"] #app .proj-crumb-sep { color: var(--ink-3) !important; }
+  html:root[data-theme="dark"] #app .proj-task-date.text-red { color: var(--red) !important; }
+  html:root[data-theme="dark"] #app .proj-crumb-cur,
+  html:root[data-theme="dark"] #app .proj-section-title,
+  html:root[data-theme="dark"] #app .proj-section-title > div > span:first-child,
+  html:root[data-theme="dark"] #app .proj-goal-text,
+  html:root[data-theme="dark"] #app .proj-task-title { color: var(--ink) !important; }
+  html:root[data-theme="dark"] #app .proj-task-title:hover { color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .proj-crumb-link:hover { color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .proj-sec-ic { color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .proj-sec-badge { background: var(--accent-soft) !important; color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .proj-goal-callout,
+  html:root[data-theme="dark"] #app .proj-prog-box { background: var(--card-2) !important; border-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .proj-task-filters { background: var(--card-2) !important; box-shadow: inset 0 0 0 1px var(--sep) !important; }
+  html:root[data-theme="dark"] #app .proj-tfilter-btn:not(.on):not(.active) { color: var(--ink-2) !important; }
+  html:root[data-theme="dark"] #app .proj-task-item { border-bottom-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .proj-task-item:hover { background: var(--card-2) !important; }
+
+  /* ---- Lịch: thanh chú thích, lọc nhanh, nhãn ---- */
+  html:root[data-theme="dark"] #app .cal-legend-bar { background: var(--card) !important; border-top-color: var(--sep) !important; color: var(--ink-2) !important; }
+  html:root[data-theme="dark"] #app .cal-qf-row { border-bottom-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .cal-m-lbl { color: var(--ink-2) !important; }
+
+  /* ---- Lịch: chế độ Tuần ---- */
+  html:root[data-theme="dark"] #app .cal-week-grid { background: var(--card) !important; border-top-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .cal-week-col { background: var(--card) !important; border-right-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .cal-week-col.is-today { background: color-mix(in srgb, var(--accent) 10%, var(--card)) !important; }
+  html:root[data-theme="dark"] #app .cal-week-col.is-sun { background: color-mix(in srgb, var(--red) 6%, var(--card)) !important; }
+  html:root[data-theme="dark"] #app .cal-week-col-head { border-bottom-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .cal-week-col-name { color: var(--ink-2) !important; }
+  html:root[data-theme="dark"] #app .cal-week-col-date:not(.today-pill) { color: var(--ink) !important; }
+  html:root[data-theme="dark"] #app .cal-week-add-btn { background: var(--card-2) !important; border-color: var(--sep-strong) !important; color: var(--ink) !important; }
+  html:root[data-theme="dark"] #app .cal-week-empty { color: var(--ink-3) !important; }
+  html:root[data-theme="dark"] #app .cal-week-card { background: var(--card-2) !important; border-color: var(--sep) !important; border-left-color: #3b82f6 !important; }
+  html:root[data-theme="dark"] #app .cal-week-card:hover { background: var(--accent-soft) !important; border-color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .cal-week-card.is-done { background: color-mix(in srgb, var(--green) 14%, var(--card)) !important; border-left-color: var(--green) !important; }
+  html:root[data-theme="dark"] #app .cal-week-card.is-over { background: color-mix(in srgb, var(--red) 14%, var(--card)) !important; border-left-color: var(--red) !important; }
+  html:root[data-theme="dark"] #app .cal-week-card-title { color: var(--ink) !important; }
+  html:root[data-theme="dark"] #app .cal-week-card-sub { color: var(--ink-2) !important; }
+
+  /* ---- Lịch: chế độ Danh sách ---- */
+  html:root[data-theme="dark"] #app .cal-list-day-header { border-bottom-color: var(--sep) !important; }
+  html:root[data-theme="dark"] #app .cal-list-day-header.is-today { border-bottom-color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .cal-list-day-title,
+  html:root[data-theme="dark"] #app .cal-list-card-title { color: var(--ink) !important; }
+  html:root[data-theme="dark"] #app .cal-list-day-header.is-today .cal-list-day-title { color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .cal-list-day-badge { background: var(--card-2) !important; color: var(--ink-2) !important; box-shadow: inset 0 0 0 1px var(--sep); }
+  html:root[data-theme="dark"] #app .cal-list-assignee,
+  html:root[data-theme="dark"] #app .cal-list-due { color: var(--ink-2) !important; }
+  html:root[data-theme="dark"] #app .cal-list-status-pill.done { background: color-mix(in srgb, var(--green) 18%, var(--card)) !important; color: var(--green) !important; }
+  html:root[data-theme="dark"] #app .cal-list-status-pill.over { background: color-mix(in srgb, var(--red) 18%, var(--card)) !important; color: var(--red) !important; }
+  html:root[data-theme="dark"] #app .cal-list-status-pill.doing { background: var(--accent-soft) !important; color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .cal-list-status-pill.todo { background: var(--card-2) !important; color: var(--ink-2) !important; }
+
+  /* ---- Các chỗ chữ phụ quá mờ ở màn khác ---- */
+  html:root[data-theme="dark"] #app .synchro-cal-date-cell:not(.is-today),
+  html:root[data-theme="dark"] #app .acc-pass,
+  html:root[data-theme="dark"] #app .staff-kpi-score-badge,
+  html:root[data-theme="dark"] #app .pa9-big-num.is-zero { color: var(--ink-2) !important; }
+  html:root[data-theme="dark"] #app .staff-act-btn { color: var(--accent) !important; }
+  html:root[data-theme="dark"] #app .g-day.today .dn { color: var(--on-pen) !important; }
+}
 </style>
 
   <script>
