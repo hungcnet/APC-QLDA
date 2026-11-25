@@ -27,11 +27,13 @@
 @layer pwa, da51;
 @layer pwa {
   html { background-color: var(--paper, #0F1220) !important; min-height: 100%; }
-  body { padding-top: env(safe-area-inset-top, 0px) !important; background-color: var(--paper, #0F1220) !important; }
+  body { background-color: var(--paper, #0F1220) !important; }
+  /* --nav-h gồm cả vùng thanh trạng thái, nên mọi phần tử sticky đặt top: var(--nav-h) đều nằm dưới nav, không bị che. */
+  :root { --nav-h: calc(56px + env(safe-area-inset-top, 0px)) !important; }
   body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: env(safe-area-inset-top, 0px); background: #0F1220; z-index: 100; pointer-events: none; }
-  .nav { top: env(safe-area-inset-top, 0px) !important; }
-  .auth, .app { min-height: calc(100dvh - env(safe-area-inset-top, 0px)) !important; }
-  .tabbar { padding-bottom: env(safe-area-inset-bottom, 0px) !important; }
+  @media (max-width: 820px) {
+    html:root #app .nav { top: 0 !important; box-sizing: border-box !important; height: var(--nav-h) !important; padding-top: env(safe-area-inset-top, 0px) !important; }
+  }
 }
 </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
